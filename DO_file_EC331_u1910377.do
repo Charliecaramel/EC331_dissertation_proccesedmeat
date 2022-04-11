@@ -119,6 +119,15 @@ foreach i in  1 3{
 
 drop if monthly_date < tm(2004m1)
 
+label var monthly_date time
+label var ln_p1 "ln(red meat prices)"
+label var m "month"
+label var income "median household income"
+label var size "household size"
+label var last_period_1 "Purchased red meat last month"
+label var age "household head age"
+
+
 ********************************************************************************
 * 4. Regression analysis on the entire sample
 ********************************************************************************
@@ -173,7 +182,8 @@ foreach i in 1 3{
 	estimates store bsp_2sls_`i'
 }
 
-esttab ols_3 fe_2sls_3 p_2sls_3 using regression1.tex, se ar2 varwidth(35) label mtitles("OLS" "FE 2SLS" "Pooled 2SLS") addnote("Regression results for processed red meat") compress
+
+esttab ols_1 fe_2sls_1 p_2sls_1 using regression1.tex, se ar2 varwidth(35) label mtitles("OLS" "FE 2SLS" "Pooled 2SLS") addnote("Regression results for unprocessed red meat") compress
 
 
 esttab ols_3 fe_2sls_3 p_2sls_3 using regression2.tex, se ar2 varwidth(35) label mtitles("OLS" "FE 2SLS" "Pooled 2SLS") addnote("Regression results for processed red meat") compress
@@ -262,6 +272,14 @@ foreach i in  1 3 4 6 7{
 }
 
 drop if monthly_date < tm(2004m1)
+
+label var monthly_date time
+label var ln_p1 "ln(red meat prices)"
+label var m "month"
+label var income "median household income"
+label var size "household size"
+label var last_period_1 "Purchased red meat last month"
+label var age "household head age"
 
 ********************************************************************************
 * 4. PM Level Regression analysis on the entire sample
